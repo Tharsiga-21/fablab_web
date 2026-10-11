@@ -1,5 +1,6 @@
-// Contact section displaying LICET FabLab address, email, phone numbers from config/site.js, and a client-side validated inquiry form.
-
+// src/features/Contact.jsx
+// Contact section: FabLab address and details, plus a validated form that opens
+// the visitor's email app addressed to the FabLab admin inbox (from config/site.js).
 import { useState } from 'react';
 import { MapPin, Mail, Phone, UserCheck, CheckCircle2, AlertCircle } from 'lucide-react';
 import { site } from '../config/site';
@@ -50,6 +51,14 @@ export default function Contact() {
     }
 
     setErrors({});
+
+    // Open the visitor's email app, addressed to the FabLab inbox
+    const subject = encodeURIComponent(`FabLab enquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    );
+    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+
     setSubmitted(true);
   };
 
@@ -127,7 +136,7 @@ export default function Contact() {
             })}
           </div>
 
-          {/* Right Column: Client-Side Validated Contact Form */}
+          {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
             <Card className="p-6 sm:p-8">
               <h3 className="text-xl font-bold text-[#1A1F36] mb-2">
@@ -148,12 +157,12 @@ export default function Contact() {
                   </div>
                   <div className="space-y-1">
                     <h4 className="text-lg font-bold text-[#1A1F36]">
-                      Message Validated & Received
+                      Almost there
                     </h4>
                     <p className="text-sm text-[#1A1F36]/75 max-w-md mx-auto">
                       Thank you, <span className="font-semibold">{formData.name}</span>.
-                      Your inquiry has been noted. For immediate booking, please
-                      use our official Google Forms in the Services section.
+                      Your email app should have opened with your message. Press Send
+                      there to deliver it.
                     </p>
                   </div>
                   <div className="pt-2">
