@@ -1,0 +1,6 @@
+{
+  "name": "LICET FabLab",
+  "description": "Fabrication and Ideation Workspace at Loyola-ICAM College of Engineering and Technology (LICET), Chennai. Request 3D printing, reserve the Design Thinking Space, and explore rapid prototyping equipment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
